@@ -1,0 +1,271 @@
+﻿[assembly: System.Reflection.AssemblyMetadata("RepositoryUrl", "https://github.com/moviecollection/my-anime-list")]
+[assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v6.0", FrameworkDisplayName=".NET 6.0")]
+namespace MovieCollection.MyAnimeList
+{
+    public static class AnimeFields
+    {
+        public static string[] All { get; }
+    }
+    public static class AnimeMediaTypes
+    {
+        public const string Movie = "movie";
+        public const string Music = "music";
+        public const string Ona = "ona";
+        public const string Ova = "ova";
+        public const string Special = "special";
+        public const string Tv = "tv";
+        public const string Unknown = "unknown";
+    }
+    public class MyAnimeListOptions
+    {
+        public MyAnimeListOptions() { }
+        public string ApiAddress { get; set; }
+        public string ApiKey { get; set; }
+        public System.Net.Http.Headers.ProductHeaderValue? ProductInformation { get; set; }
+    }
+    public class MyAnimeListService
+    {
+        public MyAnimeListService(System.Net.Http.HttpClient httpClient, MovieCollection.MyAnimeList.MyAnimeListOptions options) { }
+        public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.Anime?> GetAnimeDetailsAsync(MovieCollection.MyAnimeList.Models.NewAnimeDetails search) { }
+        public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.PagedResult<MovieCollection.MyAnimeList.Models.BaseNode<MovieCollection.MyAnimeList.Models.Anime>>?> GetAnimeListAsync(MovieCollection.MyAnimeList.Models.NewAnimeSearch search) { }
+        public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.PagedResult<MovieCollection.MyAnimeList.Models.RankingNode<MovieCollection.MyAnimeList.Models.Anime>>?> GetAnimeRankingsAsync(MovieCollection.MyAnimeList.Models.NewAnimeRanking search) { }
+        public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.SeasonalResult<MovieCollection.MyAnimeList.Models.BaseNode<MovieCollection.MyAnimeList.Models.Anime>>?> GetAnimeSeasonalAsync(MovieCollection.MyAnimeList.Models.NewAnimeSeasonal search) { }
+    }
+}
+namespace MovieCollection.MyAnimeList.Models
+{
+    public class AlternativeTitles
+    {
+        public AlternativeTitles() { }
+        [Newtonsoft.Json.JsonProperty("en")]
+        public string? English { get; set; }
+        [Newtonsoft.Json.JsonProperty("ja")]
+        public string? Japanese { get; set; }
+        [Newtonsoft.Json.JsonProperty("synonyms")]
+        public System.Collections.Generic.List<string>? Synonyms { get; set; }
+    }
+    public class Anime : MovieCollection.MyAnimeList.Models.BaseAnime
+    {
+        public Anime() { }
+        [Newtonsoft.Json.JsonProperty("alternative_titles")]
+        public MovieCollection.MyAnimeList.Models.AlternativeTitles? AlternativeTitles { get; set; }
+        [Newtonsoft.Json.JsonProperty("average_episode_duration")]
+        public int? AverageEpisodeDuration { get; set; }
+        [Newtonsoft.Json.JsonProperty("background")]
+        public string? Background { get; set; }
+        [Newtonsoft.Json.JsonProperty("broadcast")]
+        public MovieCollection.MyAnimeList.Models.Broadcast? Broadcast { get; set; }
+        [Newtonsoft.Json.JsonProperty("created_at")]
+        public System.DateTimeOffset CreatedAt { get; set; }
+        [Newtonsoft.Json.JsonProperty("end_date")]
+        public System.DateTimeOffset? EndDate { get; set; }
+        [Newtonsoft.Json.JsonProperty("genres")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Genre>? Genres { get; set; }
+        [Newtonsoft.Json.JsonProperty("mean")]
+        public double? Mean { get; set; }
+        [Newtonsoft.Json.JsonProperty("media_type")]
+        public string? MediaType { get; set; }
+        [Newtonsoft.Json.JsonProperty("nsfw")]
+        public string? Nsfw { get; set; }
+        [Newtonsoft.Json.JsonProperty("num_episodes")]
+        public int NumEpisodes { get; set; }
+        [Newtonsoft.Json.JsonProperty("num_list_users")]
+        public int NumListUsers { get; set; }
+        [Newtonsoft.Json.JsonProperty("num_scoring_users")]
+        public int NumScoringUsers { get; set; }
+        [Newtonsoft.Json.JsonProperty("pictures")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Picture>? Pictures { get; set; }
+        [Newtonsoft.Json.JsonProperty("popularity")]
+        public int? Popularity { get; set; }
+        [Newtonsoft.Json.JsonProperty("rank")]
+        public int? Rank { get; set; }
+        [Newtonsoft.Json.JsonProperty("rating")]
+        public string? Rating { get; set; }
+        [Newtonsoft.Json.JsonProperty("recommendations")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Recommendation>? Recommendations { get; set; }
+        [Newtonsoft.Json.JsonProperty("related_anime")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.RelatedAnime>? RelatedAnime { get; set; }
+        [Newtonsoft.Json.JsonProperty("source")]
+        public string? Source { get; set; }
+        [Newtonsoft.Json.JsonProperty("start_date")]
+        public System.DateTimeOffset? StartDate { get; set; }
+        [Newtonsoft.Json.JsonProperty("start_season")]
+        public MovieCollection.MyAnimeList.Models.Season? StartSeason { get; set; }
+        [Newtonsoft.Json.JsonProperty("statistics")]
+        public MovieCollection.MyAnimeList.Models.Statistics? Statistics { get; set; }
+        [Newtonsoft.Json.JsonProperty("status")]
+        public string? Status { get; set; }
+        [Newtonsoft.Json.JsonProperty("studios")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Studio>? Studios { get; set; }
+        [Newtonsoft.Json.JsonProperty("synopsis")]
+        public string? Synopsis { get; set; }
+        [Newtonsoft.Json.JsonProperty("updated_at")]
+        public System.DateTimeOffset UpdatedAt { get; set; }
+    }
+    public class BaseAnime
+    {
+        public BaseAnime() { }
+        [Newtonsoft.Json.JsonProperty("id")]
+        public int Id { get; set; }
+        [Newtonsoft.Json.JsonProperty("main_picture")]
+        public MovieCollection.MyAnimeList.Models.Picture? MainPicture { get; set; }
+        [Newtonsoft.Json.JsonProperty("title")]
+        public string? Title { get; set; }
+    }
+    public class BaseNode<T>
+    {
+        public BaseNode() { }
+        [Newtonsoft.Json.JsonProperty("node")]
+        public T Node { get; set; }
+    }
+    public class Broadcast
+    {
+        public Broadcast() { }
+        [Newtonsoft.Json.JsonProperty("day_of_the_week")]
+        public string? DayOfTheWeek { get; set; }
+        [Newtonsoft.Json.JsonProperty("start_time")]
+        public string? StartTime { get; set; }
+    }
+    public class Genre
+    {
+        public Genre() { }
+        [Newtonsoft.Json.JsonProperty("id")]
+        public int Id { get; set; }
+        [Newtonsoft.Json.JsonProperty("name")]
+        public string? Name { get; set; }
+    }
+    public class NewAnimeDetails
+    {
+        public NewAnimeDetails() { }
+        public int? AnimeId { get; set; }
+        public System.Collections.Generic.IList<string> Fields { get; set; }
+    }
+    public class NewAnimeRanking : MovieCollection.MyAnimeList.Models.NewSearchBase
+    {
+        public NewAnimeRanking() { }
+        public string? RankingType { get; set; }
+    }
+    public class NewAnimeSearch : MovieCollection.MyAnimeList.Models.NewSearchBase
+    {
+        public NewAnimeSearch() { }
+        public string? Query { get; set; }
+    }
+    public class NewAnimeSeasonal : MovieCollection.MyAnimeList.Models.NewSearchBase
+    {
+        public NewAnimeSeasonal() { }
+        public string SeasonName { get; set; }
+        public string? Sort { get; set; }
+        public int Year { get; set; }
+    }
+    public class NewSearchBase
+    {
+        public NewSearchBase() { }
+        public System.Collections.Generic.IList<string> Fields { get; set; }
+        public int? Limit { get; set; }
+        public int? Offset { get; set; }
+    }
+    public class PagedResult<T> : MovieCollection.MyAnimeList.Models.Response
+    {
+        public PagedResult() { }
+        [Newtonsoft.Json.JsonProperty("data")]
+        public System.Collections.Generic.List<T>? Data { get; set; }
+        [Newtonsoft.Json.JsonProperty("paging")]
+        public MovieCollection.MyAnimeList.Models.Paging? Paging { get; set; }
+    }
+    public class Paging
+    {
+        public Paging() { }
+        [Newtonsoft.Json.JsonProperty("next")]
+        public System.Uri? Next { get; set; }
+    }
+    public class Picture
+    {
+        public Picture() { }
+        [Newtonsoft.Json.JsonProperty("large")]
+        public System.Uri? Large { get; set; }
+        [Newtonsoft.Json.JsonProperty("medium")]
+        public System.Uri? Medium { get; set; }
+    }
+    public class Ranking
+    {
+        public Ranking() { }
+        [Newtonsoft.Json.JsonProperty("rank")]
+        public int Rank { get; set; }
+    }
+    public class RankingNode<T> : MovieCollection.MyAnimeList.Models.BaseNode<T>
+    {
+        public RankingNode() { }
+        [Newtonsoft.Json.JsonProperty("ranking")]
+        public MovieCollection.MyAnimeList.Models.Ranking? Ranking { get; set; }
+    }
+    public class Recommendation
+    {
+        public Recommendation() { }
+        [Newtonsoft.Json.JsonProperty("node")]
+        public MovieCollection.MyAnimeList.Models.BaseAnime? Node { get; set; }
+        [Newtonsoft.Json.JsonProperty("num_recommendations")]
+        public int NumRecommendations { get; set; }
+    }
+    public class RelatedAnime
+    {
+        public RelatedAnime() { }
+        [Newtonsoft.Json.JsonProperty("node")]
+        public MovieCollection.MyAnimeList.Models.BaseAnime? Node { get; set; }
+        [Newtonsoft.Json.JsonProperty("relation_type")]
+        public string? RelationType { get; set; }
+        [Newtonsoft.Json.JsonProperty("relation_type_formatted")]
+        public string? RelationTypeFormatted { get; set; }
+    }
+    public class Response
+    {
+        public Response() { }
+        [Newtonsoft.Json.JsonProperty("error")]
+        public string? Error { get; set; }
+        [Newtonsoft.Json.JsonProperty("message")]
+        public string? Message { get; set; }
+    }
+    public class Season
+    {
+        public Season() { }
+        [Newtonsoft.Json.JsonProperty("season")]
+        public string? SeasonName { get; set; }
+        [Newtonsoft.Json.JsonProperty("year")]
+        public int Year { get; set; }
+    }
+    public class SeasonalResult<T> : MovieCollection.MyAnimeList.Models.PagedResult<T>
+    {
+        public SeasonalResult() { }
+        [Newtonsoft.Json.JsonProperty("season")]
+        public MovieCollection.MyAnimeList.Models.Season? Season { get; set; }
+    }
+    public class Statistics
+    {
+        public Statistics() { }
+        [Newtonsoft.Json.JsonProperty("num_list_users")]
+        public int NumListUsers { get; set; }
+        [Newtonsoft.Json.JsonProperty("status")]
+        public MovieCollection.MyAnimeList.Models.StatisticsStatus? Status { get; set; }
+    }
+    public class StatisticsStatus
+    {
+        public StatisticsStatus() { }
+        [Newtonsoft.Json.JsonProperty("completed")]
+        public string? Completed { get; set; }
+        [Newtonsoft.Json.JsonProperty("dropped")]
+        public string? Dropped { get; set; }
+        [Newtonsoft.Json.JsonProperty("on_hold")]
+        public string? OnHold { get; set; }
+        [Newtonsoft.Json.JsonProperty("plan_to_watch")]
+        public string? PlanToWatch { get; set; }
+        [Newtonsoft.Json.JsonProperty("watching")]
+        public string? Watching { get; set; }
+    }
+    public class Studio
+    {
+        public Studio() { }
+        [Newtonsoft.Json.JsonProperty("id")]
+        public int Id { get; set; }
+        [Newtonsoft.Json.JsonProperty("name")]
+        public string? Name { get; set; }
+    }
+}
