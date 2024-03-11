@@ -80,7 +80,7 @@
         /// </summary>
         /// <param name="search">An instance of the <see cref="NewAnimeSearch"/> class.</param>
         /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-        public Task<Anime?> GetAnimeDetailsAsync(NewAnimeDetails search)
+        public Task<AnimeDetails?> GetAnimeDetailsAsync(NewAnimeDetails search)
         {
             if (search is null)
             {
@@ -100,7 +100,7 @@
             }
 
             // TODO: Add the token.
-            return GetJsonAsync<Anime>($"/v2/anime/{search.AnimeId}", parameters);
+            return GetJsonAsync<AnimeDetails>($"/v2/anime/{search.AnimeId}", parameters);
         }
 
         /// <summary>
@@ -198,6 +198,7 @@
         }
 
         private async Task<T?> GetJsonAsync<T>(string requestUrl, Dictionary<string, object>? parameters = null, string? token = null)
+            where T : Response
         {
             string url = _options.ApiAddress + requestUrl;
 
@@ -213,6 +214,7 @@
         }
 
         private async Task<T?> SendRequestAsync<T>(HttpRequestMessage request, string? token = null)
+            where T : Response
         {
             request.Headers.Add("X-MAL-CLIENT-ID", _options.ApiKey);
 

@@ -26,7 +26,7 @@ namespace MovieCollection.MyAnimeList
     public class MyAnimeListService
     {
         public MyAnimeListService(System.Net.Http.HttpClient httpClient, MovieCollection.MyAnimeList.MyAnimeListOptions options) { }
-        public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.Anime?> GetAnimeDetailsAsync(MovieCollection.MyAnimeList.Models.NewAnimeDetails search) { }
+        public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.AnimeDetails?> GetAnimeDetailsAsync(MovieCollection.MyAnimeList.Models.NewAnimeDetails search) { }
         public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.PagedResult<MovieCollection.MyAnimeList.Models.BaseNode<MovieCollection.MyAnimeList.Models.Anime>>?> GetAnimeListAsync(MovieCollection.MyAnimeList.Models.NewAnimeSearch search) { }
         public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.PagedResult<MovieCollection.MyAnimeList.Models.RankingNode<MovieCollection.MyAnimeList.Models.Anime>>?> GetAnimeRankingsAsync(MovieCollection.MyAnimeList.Models.NewAnimeRanking search) { }
         public System.Threading.Tasks.Task<MovieCollection.MyAnimeList.Models.SeasonalResult<MovieCollection.MyAnimeList.Models.BaseNode<MovieCollection.MyAnimeList.Models.Anime>>?> GetAnimeSeasonalAsync(MovieCollection.MyAnimeList.Models.NewAnimeSeasonal search) { }
@@ -99,6 +99,70 @@ namespace MovieCollection.MyAnimeList.Models
         public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Studio>? Studios { get; set; }
         [Newtonsoft.Json.JsonProperty("synopsis")]
         public string? Synopsis { get; set; }
+        [Newtonsoft.Json.JsonProperty("updated_at")]
+        public System.DateTimeOffset UpdatedAt { get; set; }
+    }
+    public class AnimeDetails : MovieCollection.MyAnimeList.Models.Response
+    {
+        public AnimeDetails() { }
+        [Newtonsoft.Json.JsonProperty("alternative_titles")]
+        public MovieCollection.MyAnimeList.Models.AlternativeTitles? AlternativeTitles { get; set; }
+        [Newtonsoft.Json.JsonProperty("average_episode_duration")]
+        public int? AverageEpisodeDuration { get; set; }
+        [Newtonsoft.Json.JsonProperty("background")]
+        public string? Background { get; set; }
+        [Newtonsoft.Json.JsonProperty("broadcast")]
+        public MovieCollection.MyAnimeList.Models.Broadcast? Broadcast { get; set; }
+        [Newtonsoft.Json.JsonProperty("created_at")]
+        public System.DateTimeOffset CreatedAt { get; set; }
+        [Newtonsoft.Json.JsonProperty("end_date")]
+        public System.DateTimeOffset? EndDate { get; set; }
+        [Newtonsoft.Json.JsonProperty("genres")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Genre>? Genres { get; set; }
+        [Newtonsoft.Json.JsonProperty("id")]
+        public int Id { get; set; }
+        [Newtonsoft.Json.JsonProperty("main_picture")]
+        public MovieCollection.MyAnimeList.Models.Picture? MainPicture { get; set; }
+        [Newtonsoft.Json.JsonProperty("mean")]
+        public double? Mean { get; set; }
+        [Newtonsoft.Json.JsonProperty("media_type")]
+        public string? MediaType { get; set; }
+        [Newtonsoft.Json.JsonProperty("nsfw")]
+        public string? Nsfw { get; set; }
+        [Newtonsoft.Json.JsonProperty("num_episodes")]
+        public int NumEpisodes { get; set; }
+        [Newtonsoft.Json.JsonProperty("num_list_users")]
+        public int NumListUsers { get; set; }
+        [Newtonsoft.Json.JsonProperty("num_scoring_users")]
+        public int NumScoringUsers { get; set; }
+        [Newtonsoft.Json.JsonProperty("pictures")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Picture>? Pictures { get; set; }
+        [Newtonsoft.Json.JsonProperty("popularity")]
+        public int? Popularity { get; set; }
+        [Newtonsoft.Json.JsonProperty("rank")]
+        public int? Rank { get; set; }
+        [Newtonsoft.Json.JsonProperty("rating")]
+        public string? Rating { get; set; }
+        [Newtonsoft.Json.JsonProperty("recommendations")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Recommendation>? Recommendations { get; set; }
+        [Newtonsoft.Json.JsonProperty("related_anime")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.RelatedAnime>? RelatedAnime { get; set; }
+        [Newtonsoft.Json.JsonProperty("source")]
+        public string? Source { get; set; }
+        [Newtonsoft.Json.JsonProperty("start_date")]
+        public System.DateTimeOffset? StartDate { get; set; }
+        [Newtonsoft.Json.JsonProperty("start_season")]
+        public MovieCollection.MyAnimeList.Models.Season? StartSeason { get; set; }
+        [Newtonsoft.Json.JsonProperty("statistics")]
+        public MovieCollection.MyAnimeList.Models.Statistics? Statistics { get; set; }
+        [Newtonsoft.Json.JsonProperty("status")]
+        public string? Status { get; set; }
+        [Newtonsoft.Json.JsonProperty("studios")]
+        public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Studio>? Studios { get; set; }
+        [Newtonsoft.Json.JsonProperty("synopsis")]
+        public string? Synopsis { get; set; }
+        [Newtonsoft.Json.JsonProperty("title")]
+        public string? Title { get; set; }
         [Newtonsoft.Json.JsonProperty("updated_at")]
         public System.DateTimeOffset UpdatedAt { get; set; }
     }
