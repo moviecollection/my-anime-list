@@ -19,10 +19,10 @@
         public AlternativeTitles? AlternativeTitles { get; set; }
 
         [JsonProperty("start_date")]
-        public DateTimeOffset? StartDate { get; set; }
+        public string? StartDate { get; set; }
 
         [JsonProperty("end_date")]
-        public DateTimeOffset? EndDate { get; set; }
+        public string? EndDate { get; set; }
 
         [JsonProperty("synopsis")]
         public string? Synopsis { get; set; }

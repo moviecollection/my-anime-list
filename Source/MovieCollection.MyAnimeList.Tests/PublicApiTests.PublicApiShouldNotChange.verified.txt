@@ -58,7 +58,7 @@ namespace MovieCollection.MyAnimeList.Models
         [Newtonsoft.Json.JsonProperty("created_at")]
         public System.DateTimeOffset CreatedAt { get; set; }
         [Newtonsoft.Json.JsonProperty("end_date")]
-        public System.DateTimeOffset? EndDate { get; set; }
+        public string? EndDate { get; set; }
         [Newtonsoft.Json.JsonProperty("genres")]
         public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Genre>? Genres { get; set; }
         [Newtonsoft.Json.JsonProperty("mean")]
@@ -88,7 +88,7 @@ namespace MovieCollection.MyAnimeList.Models
         [Newtonsoft.Json.JsonProperty("source")]
         public string? Source { get; set; }
         [Newtonsoft.Json.JsonProperty("start_date")]
-        public System.DateTimeOffset? StartDate { get; set; }
+        public string? StartDate { get; set; }
         [Newtonsoft.Json.JsonProperty("start_season")]
         public MovieCollection.MyAnimeList.Models.Season? StartSeason { get; set; }
         [Newtonsoft.Json.JsonProperty("statistics")]
@@ -116,7 +116,7 @@ namespace MovieCollection.MyAnimeList.Models
         [Newtonsoft.Json.JsonProperty("created_at")]
         public System.DateTimeOffset CreatedAt { get; set; }
         [Newtonsoft.Json.JsonProperty("end_date")]
-        public System.DateTimeOffset? EndDate { get; set; }
+        public string? EndDate { get; set; }
         [Newtonsoft.Json.JsonProperty("genres")]
         public System.Collections.Generic.List<MovieCollection.MyAnimeList.Models.Genre>? Genres { get; set; }
         [Newtonsoft.Json.JsonProperty("id")]
@@ -150,7 +150,7 @@ namespace MovieCollection.MyAnimeList.Models
         [Newtonsoft.Json.JsonProperty("source")]
         public string? Source { get; set; }
         [Newtonsoft.Json.JsonProperty("start_date")]
-        public System.DateTimeOffset? StartDate { get; set; }
+        public string? StartDate { get; set; }
         [Newtonsoft.Json.JsonProperty("start_season")]
         public MovieCollection.MyAnimeList.Models.Season? StartSeason { get; set; }
         [Newtonsoft.Json.JsonProperty("statistics")]
