@@ -30,7 +30,7 @@ var options = new MyAnimeListOptions
 var service = new MyAnimeListService(httpClient, options);
 ```
 
-## Searching for an Anime
+## Anime List
 You can search for an anime via the `GetAnimeListAsync` method.
 ```csharp
 var search = new NewAnimeSearch

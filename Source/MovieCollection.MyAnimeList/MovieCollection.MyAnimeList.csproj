@@ -31,6 +31,7 @@
     <PropertyGroup>
         <Authors>Peyman Mohammadi</Authors>
         <Copyright>© 2024 Peyman Mohammadi</Copyright>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageId>MovieCollection.MyAnimeList</PackageId>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>anime; api; wrapper; myanimelist</PackageTags>
@@ -39,6 +40,10 @@
         <RepositoryUrl>https://github.com/moviecollection/my-anime-list</RepositoryUrl>
         <PackageProjectUrl>https://github.com/moviecollection/my-anime-list</PackageProjectUrl>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
         <Reference Include="System.Net.Http" />
